@@ -18,7 +18,7 @@ export class AuthService {
   isAuthenticated : boolean = false;
   roles : any;
   username : any;
-  jwtToken !: string;
+  jwt !: string;
 
   constructor(private http : HttpClient) { }
 
@@ -31,10 +31,15 @@ export class AuthService {
   }
 
   loadUser(response: any) {
-    let token = response['token'];
-    let decodedJwt = jwtDecode(token);
-    console.log(decodedJwt)
+    this.isAuthenticated = true;
+    this.jwt = response['token'];
+    let decodedJwt : any = jwtDecode(this.jwt);
+    this.username = decodedJwt.username;
+    this.roles = decodedJwt.aut.split(" ");
+  }
 
+  getJwtToken(){
+    return this.jwt;
   }
   
 }
