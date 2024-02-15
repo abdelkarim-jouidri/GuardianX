@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,9 @@ export class AuthService {
 
   loadUser(response: any) {
     let token = response['token'];
-    console.log(token)
+    let decodedJwt = jwtDecode(token);
+    console.log(decodedJwt)
+
   }
   
 }
