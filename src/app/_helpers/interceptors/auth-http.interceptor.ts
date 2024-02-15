@@ -16,6 +16,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if(request.url.includes("/auth/login")) return next.handle(request);
     const jwt = this.authService.getJwtToken();
+    console.log(jwt)
     const authRequest = request.clone({
       headers : request.headers.set('Authorization', 'Bearer '+ jwt)
     });
