@@ -36,6 +36,10 @@ export class AuthService {
       return this.http.post(this.url+"/login", {"username": username, "password": password});
   }
 
+  register(username : string , password : string){
+    return this.http.post(this.url+"/register", {"username": username, "password": password})
+  }
+
   loadUser(response: any) {
     this.isAuthenticated = true;
     this.jwt = response['token'];

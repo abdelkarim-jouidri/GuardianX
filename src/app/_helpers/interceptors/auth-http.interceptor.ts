@@ -14,7 +14,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if(request.url.includes("/auth/login")) return next.handle(request);
+    if(request.url.includes("/auth/login") || request.url.includes("/auth/register")) return next.handle(request);
     const jwt = this.authService.getJwtToken();
     console.log(jwt)
     const authRequest = request.clone({

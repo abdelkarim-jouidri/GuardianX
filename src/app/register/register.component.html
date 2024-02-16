@@ -1,1 +1,29 @@
-<p>register works!</p>
+
+<div style="background-color: rgb(224, 232, 241);">
+<app-login-register-switcher></app-login-register-switcher>
+    
+    <div class="container " >
+      <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6">
+            <div class="p-3">
+                <div class="card ">
+                    <div class="card-header text-center">Create Account</div>
+                    <div class="card-body">
+                        <form [formGroup]="formRegister" (ngSubmit)="handleRegister()">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Username</label>
+                                <input type="text" name="" id="" class="form-control" formControlName="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Password</label>
+                                <input type="password" name="" id="" class="form-control" formControlName="password">
+                            </div>
+                            <button class="btn btn-primary" >Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
