@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthHttpInterceptor } from './_helpers/interceptors/auth-http.interceptor';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ForbiddenComponent } from './shared/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     AdminComponent,
     RegisterComponent,
     HomePageComponent,
-    NavbarComponent
+    NavbarComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,

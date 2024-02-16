@@ -41,5 +41,12 @@ export class AuthService {
   getJwtToken(){
     return this.jwt;
   }
+
+  logout(){
+    this.isAuthenticated = false;
+    this.jwt = '';
+    this.username = undefined;
+    this.roles = undefined;
+  }
   
 }
