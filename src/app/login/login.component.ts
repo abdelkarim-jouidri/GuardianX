@@ -25,9 +25,10 @@ export class LoginComponent implements OnInit{
   handleLogin(){
     console.log(this.formLogin.value)
     this.authService.login(this.formLogin.value.username, this.formLogin.value.password).subscribe({
-      next : response => {
+      next : response  => {
           this.authService.loadUser(response)
           this.router.navigateByUrl("/home")
+         
       },
       error : err => {
         console.log(err)

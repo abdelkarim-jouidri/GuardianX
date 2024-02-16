@@ -20,14 +20,20 @@ export class AuthService {
   username : any;
   jwt !: string;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) {
+    const token = localStorage.getItem('jwt_token');
+    if (token) {
+      this.isAuthenticated = true;
+      this.jwt = token;
+      const decodedJwt: any = jwtDecode(this.jwt);
+      this.username = decodedJwt.username;
+      this.roles = decodedJwt.aut.split(" ");
+    }
+   }
 
   login(username : string , password : string){
-      let options = {
-        headers : new HttpHeaders().set("Content-type", "application/json")
-      }
-      let params =  new HttpParams().set("username", username).set("password",password);
-      return this.http.post(this.url+"/login", {"username": username, "password": password})
+  
+      return this.http.post(this.url+"/login", {"username": username, "password": password});
   }
 
   loadUser(response: any) {
@@ -36,6 +42,8 @@ export class AuthService {
     let decodedJwt : any = jwtDecode(this.jwt);
     this.username = decodedJwt.username;
     this.roles = decodedJwt.aut.split(" ");
+    localStorage.setItem('jwt_token', this.jwt);
+
   }
 
   getJwtToken(){
@@ -47,6 +55,7 @@ export class AuthService {
     this.jwt = '';
     this.username = undefined;
     this.roles = undefined;
+    localStorage.removeItem('jwt_token');
   }
   
 }
